@@ -10,21 +10,21 @@ use PHPUnit\Framework\TestCase;
 trait StringTemplateMatching
 {
     /**
-     * @param $string
-     * @param $message
+     * @param string $templateString A template string for printf e.g. "Hello %s"
+     * @param string $actualString The string to test to see if it matches e.g. "Hello John"
      */
-    public function assertMessagesMatchesTemplateString(string $string, string $message): void
+    public function assertStringMatchesTemplateString(string $templateString, string $actualString): void
     {
-        $regExp = templateStringToRegExp($string);
-        $this->assertRegExp($regExp, $message);
+        $regExp = templateStringToRegExp($templateString);
+        $this->assertRegExp($regExp, $actualString);
     }
 
     /**
-     * @param $string
+     * @param string $templateString A template string for printf e.g. "Hello %s"
      */
-    public function expectExceptionMessageMatchesTemplateString(string $string): void
+    public function expectExceptionMessageMatchesTemplateString(string $templateString): void
     {
-        $regexp = templateStringToRegExp($string);
+        $regexp = templateStringToRegExp($templateString);
         $this->expectExceptionMessageMatches($regexp);
     }
 }

@@ -16,7 +16,7 @@ trait StringTemplateMatching
     public function assertStringMatchesTemplateString(string $templateString, string $actualString): void
     {
         $regExp = templateStringToRegExp($templateString);
-        $this->assertRegExp($regExp, $actualString);
+        $this->assertMatchesRegularExpression($regExp, $actualString);
     }
 
     /**
